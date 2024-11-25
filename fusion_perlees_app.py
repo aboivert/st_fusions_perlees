@@ -32,15 +32,13 @@ if fusions_file is not None:
         st.dataframe(names_group)
     stop_point_names_ct = pd.crosstab(names_group['names'], names_group['names']).apply(lambda col: [fuzz.ratio(col.name, x) for x in col.index])
     st.markdown("- Similitudes entre les noms")
-    heatmap_plot=st.radio("Affichage de la heatmap", ['Heatmap complète', 'Ratio maximal'])
-    if heatmap_plot=='Ratio maximal':
-        ratio = st.number_input("Ratio maximal",0,100,20,1)
-        for i in stop_point_names_ct.columns:
-            data_to_plot = stop_point_names_ct[stop_point_names_ct[i] >ratio][i].drop([i], axis=0)
-        annotation=True
-    else:
-        data_to_plot = stop_point_names_ct.copy()
-        annotation=False
+    #heatmap_plot=st.radio("Affichage de la heatmap", ['Heatmap complète', 'Ratio maximal'])
+    #if heatmap_plot=='Ratio maximal':
+    #    ratio = st.number_input("Ratio maximal",0,100,20,1)
+    #    for i in stop_point_names_ct.columns:
+    #        data_to_plot = stop_point_names_ct[stop_point_names_ct[i] >ratio][i].drop([i], axis=0)
+    #else:
+    #    data_to_plot = stop_point_names_ct.copy()
     #st.dataframe(stop_point_names_ct)
     annotation = st.checkbox('Affichage des valeurs de similtude (/!\ moins de 20 noms pour un affichage clair)')
     plot = sns.heatmap(stop_point_names_ct, annot=annotation)
