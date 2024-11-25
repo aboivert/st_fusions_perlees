@@ -10,8 +10,9 @@ st.set_page_config(
     layout="wide"
 )
 
-fusions = st.file_uploader("Choisir un fichier de fusions.")
-if fusions is not None:
+fusions_file = st.file_uploader("Choisir un fichier de fusions.")
+if fusions_file is not None:
+    fusions = pd.read_csv(uploaded_shapes)
     fusions['group']=fusions['group'].astype(str)
     fusions['stop_area_names']=fusions['stop_area_name'].astype(str)
     number_of_stops = st.number_input("Nombre d'arrêts dans le groupe",0,100,20,1)
