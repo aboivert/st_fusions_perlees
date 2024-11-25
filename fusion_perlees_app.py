@@ -127,7 +127,7 @@ if fusions_file is not None:
                             get_color="[255,255, 0]",
                             pickable=True,
                             auto_highlight=True,
-                            get_radius=20,
+                            get_radius=100,
                         )
                         barycenter = pydeck.Layer(
                             "ScatterplotLayer",
