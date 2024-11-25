@@ -22,7 +22,7 @@ st.set_page_config(
     layout="wide"
 )
 st.markdown("- Ajouter nombre de noms uniques par groupe")
-st.markdown("- Couleurs + barycentre et vérif Ethiopie")
+
 col__1, col__2 = st.columns(2)
 with col__1:
     fusions_file = st.file_uploader("Choisir un fichier de fusions.")   
