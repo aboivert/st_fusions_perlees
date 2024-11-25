@@ -162,7 +162,7 @@ if fusions_file is not None:
                 get_color="[255, 75, 75]",
                 pickable=True,
                 auto_highlight=True,
-                get_radius=50,
+                get_radius=25,
             )
             view_state = pydeck.ViewState(
                 latitude=barycentre_df2.mean_lat.mean(), longitude=barycentre_df2.mean_lon.mean(), controller=True, zoom=10 , pitch=30
