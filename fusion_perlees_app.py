@@ -173,6 +173,7 @@ if fusions_file is not None:
                 tooltip={"text": "{nom}"},
             )
             event = st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
+            st.dataframe(barycentre_df2)
     with st.expander("Analyse de toute la donnée"):
         st.dataframe(fusions['group'].value_counts())
 else:
