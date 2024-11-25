@@ -129,7 +129,7 @@ if fusions_file is not None:
                             auto_highlight=True,
                             get_radius=20,
                         )
-                        barycenter = = pydeck.Layer(
+                        barycenter = pydeck.Layer(
                             "ScatterplotLayer",
                             data=barycentre_df[barycentre_df.nom==temp_data.loc[index1].stop_name],
                             #id="capital-cities",
