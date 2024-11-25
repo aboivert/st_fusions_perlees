@@ -11,10 +11,9 @@ st.set_page_config(
 )
 
 fusions = st.file_uploader("Choisir un fichier de fusions.")
-#fusions = pd.read_csv(r"C:\Users\aboivert\Downloads\export-merge_081124.csv")
-fusions['group']=fusions['group'].astype(str)
-fusions['stop_area_names']=fusions['stop_area_name'].astype(str)
 if fusions is not None:
+    fusions['group']=fusions['group'].astype(str)
+    fusions['stop_area_names']=fusions['stop_area_name'].astype(str)
     number_of_stops = st.number_input("Nombre d'arrêts dans le groupe",0,100,20,1)
     group_to_analyse=st.text_input("Group à analyser")
     groups_with_more_than_n_stops = fusions.groupby('group').filter(lambda x: len(x) > number_of_stops)
