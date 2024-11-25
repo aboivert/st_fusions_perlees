@@ -127,7 +127,7 @@ if fusions_file is not None:
                             get_color="[255,255, 0]",
                             pickable=True,
                             auto_highlight=True,
-                            get_radius=5000,
+                            get_radius=25,
                         )
                         view_state = pydeck.ViewState(
                             latitude=temp_data.stop_lat.mean(), longitude=temp_data.stop_lon.mean(), controller=True, zoom=5 , pitch=30
