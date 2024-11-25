@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import fuzzywuzzy
 from fuzzywuzzy import fuzz
 import seaborn as sns
 
@@ -10,7 +11,7 @@ st.set_page_config(
 )
 
 fusions = st.file_uploader("Choisir un fichier de fusions.")
-fusions = pd.read_csv(r"C:\Users\aboivert\Downloads\export-merge_081124.csv")
+#fusions = pd.read_csv(r"C:\Users\aboivert\Downloads\export-merge_081124.csv")
 fusions['group']=fusions['group'].astype(str)
 fusions['stop_area_names']=fusions['stop_area_name'].astype(str)
 if fusions is not None:
