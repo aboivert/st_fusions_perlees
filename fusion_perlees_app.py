@@ -129,11 +129,21 @@ if fusions_file is not None:
                             auto_highlight=True,
                             get_radius=20,
                         )
+                        barycenter = = pydeck.Layer(
+                            "ScatterplotLayer",
+                            data=barycentre_df[barycentre_df.nom==temp_data.loc[index1].stop_name],
+                            #id="capital-cities",
+                            get_position=["stop_lon", "stop_lat"],
+                            get_color="[255, 0]",
+                            pickable=True,
+                            auto_highlight=True,
+                            get_radius=2000,
+                        )
                         view_state = pydeck.ViewState(
                             latitude=temp_data.stop_lat.mean(), longitude=temp_data.stop_lon.mean(), controller=True, zoom=5 , pitch=30
                         )
                         chart = pydeck.Deck(
-                            point_layer,
+                            layers=[point_layer, barycenter],
                             initial_view_state=view_state,
                             tooltip={"text": "{stop_name} ({stop_id})"},
                         )
