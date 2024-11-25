@@ -133,7 +133,7 @@ if fusions_file is not None:
                             "ScatterplotLayer",
                             data=barycentre_df[barycentre_df.nom==temp_data.loc[index1].stop_name],
                             #id="capital-cities",
-                            get_position=["stop_lon", "stop_lat"],
+                            get_position=["mean_lon", "mean_lat"],
                             get_color="[255, 0]",
                             pickable=True,
                             auto_highlight=True,
