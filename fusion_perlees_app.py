@@ -22,8 +22,7 @@ st.set_page_config(
     layout="wide"
 )
 st.markdown("- Ajouter nombre de noms uniques par groupe")
-st.markdown("- Carte avec dès qu'un problème le barycentre, les arrêts proches, et les arrêts trop loins")
-st.markdown("- Carte des distances de chaque barycentre des zones perlées")
+st.markdown("- Couleurs + barycentre et vérif Ethiopie")
 col__1, col__2 = st.columns(2)
 with col__1:
     fusions_file = st.file_uploader("Choisir un fichier de fusions.")   
@@ -162,7 +161,7 @@ if fusions_file is not None:
                 get_color="[255, 75, 75]",
                 pickable=True,
                 auto_highlight=True,
-                get_radius=25,
+                get_radius=50,
             )
             view_state = pydeck.ViewState(
                 latitude=barycentre_df2.mean_lat.mean(), longitude=barycentre_df2.mean_lon.mean(), controller=True, zoom=10 , pitch=30
