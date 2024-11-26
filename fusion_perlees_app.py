@@ -118,7 +118,7 @@ if fusions_file is not None:
                     if (temp_data.problem==1).any():
                         st.text("Zone d'arrêt " + str(temp_data.loc[index1].stop_name))
                         st.dataframe(temp_data[['stop_id','stop_name','stop_lat','stop_lon','problem','dist']])
-                        st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius1")
+                        st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius_1")
                         #st.map(temp_data, latitude='stop_lat',longitude='stop_lon')
                         point_layer = pydeck.Layer(
                             "ScatterplotLayer",
@@ -128,7 +128,7 @@ if fusions_file is not None:
                             get_color="[255,255, 0]",
                             pickable=True,
                             auto_highlight=True,
-                            get_radius=st.session_state.radius1,
+                            get_radius=st.session_state.radius_1,
                         )
                         barycenter = pydeck.Layer(
                             "ScatterplotLayer",
@@ -164,7 +164,7 @@ if fusions_file is not None:
                 new_row={'nom':names_group.loc[index2].names,'mean_lat':mean_lat,'mean_lon':mean_lon}
                 barycentre_df2 = barycentre_df2._append(new_row, ignore_index=True)  
             #st.dataframe(barycentre_df2)
-            st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius2")
+            st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius_2")
             point_layer = pydeck.Layer(
                 "ScatterplotLayer",
                 data=barycentre_df2,
@@ -173,7 +173,7 @@ if fusions_file is not None:
                 get_color="[255, 75, 75]",
                 pickable=True,
                 auto_highlight=True,
-                get_radius=st.session_state.radius2,
+                get_radius=st.session_state.radius_2,
             )
             view_state = pydeck.ViewState(
                 latitude=barycentre_df2.mean_lat.mean(), longitude=barycentre_df2.mean_lon.mean(), controller=True, zoom=10 , pitch=30
