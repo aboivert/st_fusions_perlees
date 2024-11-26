@@ -118,7 +118,7 @@ if fusions_file is not None:
                     if (temp_data.problem==1).any():
                         st.text("Zone d'arrêt " + str(temp_data.loc[index1].stop_name))
                         st.dataframe(temp_data[['stop_id','stop_name','stop_lat','stop_lon','problem','dist']])
-                        st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius_1")
+                        st.slider("Radius 1", min_value=25, max_value=300, value=3, step=1, key="radius_1")
                         #st.map(temp_data, latitude='stop_lat',longitude='stop_lon')
                         point_layer = pydeck.Layer(
                             "ScatterplotLayer",
@@ -164,7 +164,7 @@ if fusions_file is not None:
                 new_row={'nom':names_group.loc[index2].names,'mean_lat':mean_lat,'mean_lon':mean_lon}
                 barycentre_df2 = barycentre_df2._append(new_row, ignore_index=True)  
             #st.dataframe(barycentre_df2)
-            st.slider("Radius", min_value=25, max_value=300, value=3, step=1, key="radius_2")
+            st.slider("Radius 2", min_value=25, max_value=300, value=3, step=1, key="radius_2")
             point_layer = pydeck.Layer(
                 "ScatterplotLayer",
                 data=barycentre_df2,
