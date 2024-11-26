@@ -144,7 +144,7 @@ if fusions_file is not None:
                             get_radius=2000,
                         )
                         view_state = pydeck.ViewState(
-                            latitude=temp_data.stop_lat.mean(), longitude=temp_data.stop_lon.mean(), controller=True, zoom=5 , pitch=30
+                            latitude=temp_data.stop_lat.mean(), longitude=temp_data.stop_lon.mean(), controller=True, zoom=7 , pitch=30
                         )
                         chart = pydeck.Deck(
                             layers=[point_layer, barycenter],
