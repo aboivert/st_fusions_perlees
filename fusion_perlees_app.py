@@ -91,6 +91,7 @@ if fusions_file is not None:
             except: 
                 st.error("Groupe inexistant. Vérifier la case 'Group à analyser'")
     if analyse_stops:
+        cpt=0
         with st.expander("Analyse entre zones d'arrêts avec le même nom"):
             #st.text("Permet de vérifier pour chacun des " + str(names_group.shape[0]) + " noms uniques du groupe " + str(group_to_analyse) +  " si toutes les zones d'arrêts définis avec ce nom sont bien proches entre elles.")
             if stops.empty:
@@ -115,10 +116,11 @@ if fusions_file is not None:
                         #else:
                         #    temp_data.loc[index1,'problem'] = '[0, 255, 0]'
                         temp_data.loc[index1,'dist'] = temp_dist
+                    value_key = 'radius_' + str(cpt)
                     if (temp_data.problem==1).any():
                         st.text("Zone d'arrêt " + str(temp_data.loc[index1].stop_name))
                         st.dataframe(temp_data[['stop_id','stop_name','stop_lat','stop_lon','problem','dist']])
-                        st.slider("Radius 1", min_value=25, max_value=300, value=3, step=1, key="radius_1")
+                        st.slider("Radius 1", min_value=25, max_value=300, value=3, step=1, key=value_key)
                         #st.map(temp_data, latitude='stop_lat',longitude='stop_lon')
                         point_layer = pydeck.Layer(
                             "ScatterplotLayer",
@@ -128,8 +130,9 @@ if fusions_file is not None:
                             get_color="[255,255, 0]",
                             pickable=True,
                             auto_highlight=True,
-                            get_radius=st.session_state.radius_1,
+                            get_radius=st.session_state.value_key,
                         )
+                        cpt+=1
                         barycenter = pydeck.Layer(
                             "ScatterplotLayer",
                             data=barycentre_df[barycentre_df.nom==temp_data.loc[index1].stop_name],
