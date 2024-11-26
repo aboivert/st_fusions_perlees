@@ -130,7 +130,7 @@ if fusions_file is not None:
                             get_color="[255,255, 0]",
                             pickable=True,
                             auto_highlight=True,
-                            get_radius=st.session_state.value_key,
+                            get_radius=st.session_state[value_key],
                         )
                         cpt+=1
                         barycenter = pydeck.Layer(
