@@ -120,7 +120,7 @@ if fusions_file is not None:
                     if (temp_data.problem==1).any():
                         st.text("Zone d'arrêt " + str(temp_data.loc[index1].stop_name))
                         st.dataframe(temp_data[['stop_id','stop_name','stop_lat','stop_lon','problem','dist']])
-                        st.slider("Rayon des points", min_value=100, max_value=300, value=3, step=1, key=value_key)
+                        st.slider("Rayon des points", min_value=3, max_value=300, value=100, step=1, key=value_key)
                         #st.map(temp_data, latitude='stop_lat',longitude='stop_lon')
                         point_layer = pydeck.Layer(
                             "ScatterplotLayer",
